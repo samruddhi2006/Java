@@ -1,0 +1,138 @@
+String
+
+String is immutable  ( once created can not be changed )object  . 
+The object created as a String is stored in the  Constant String Pool where as all other objects
+are stored on heap. 
+Every immutable object in Java is thread safe ,that implies String is also thread safe . 
+String can not be used by two threads concurrently.
+String  once assigned can not be changed.
+String is a final class.
+
+
+StringBuffer
+
+StringBuffer is mutable means one can change the value of the object .
+The object created through StringBuffer is stored on the heap. 
+StringBuffer  has the same methods as the StringBuilder , but each method in StringBuffer is 
+synchronized that is StringBuffer is thread safe . 
+By using toString() method, we can convert StringBuffer to String.
+equals() method is not overriden in StringBuffer
+
+StringBuilder
+
+StringBuilder  is same as the StringBuffer , that is it stores the object in heap and 
+it can also be modified . The main difference between the StringBuffer and StringBuilder is that 
+StringBuilder is not thread safe. 
+StringBuilder is fast as it is not thread safe .  
+equals() method is not overriden in StringBuilder
+
+---------------------------------------------------------------------------------------------
+                                    String                    StringBuffer         StringBuilder
+---------------------------------------------------------------------------------------------                 
+Storage Area    Constant String Pool           Heap                       Heap 
+
+Modifiable         No (immutable)            Yes( mutable )          Yes( mutable )
+
+Thread Safe               Yes                                  Yes                              No
+
+ Performance            Fast                                Very slow                    Fast
+----------------------------------------------------------------------------------------------
+
+Examples:
+
+class Demo
+{
+  public static void main(String args[ ]) 
+   {
+      String str1="CPC";
+      String str2="CPC";
+      String str3="CPC";
+ 
+      System.out.println(str1==str2);
+      System.out.println(str1==str3);
+ 
+      str1="Pune";
+ 
+      System.out.println(str1);
+      System.out.println(str2);
+      System.out.println(str3);
+   }
+}
+o/p:
+true
+true
+Pune
+CPC
+CPC
+-------------------------------------------------------------------------------
+
+class Demo
+{
+  public static void main(String args[ ]) 
+   {
+      String str1=new String("CPC");
+      String str2=new String("CPC");
+      String str3=new String("CPC");
+ 
+      System.out.println(str1==str2);
+      System.out.println(str1==str3);
+   }
+}
+o/p:
+false
+false
+-------------------------------------------------------------------------------
+
+class Demo
+{
+  public static void main(String args[ ]) 
+   {
+      String str1="CPC Pune";
+ 
+      StringBuffer sb=new StringBuffer(str1);       
+      sb.reverse();
+ 
+      System.out.println(sb);
+ 
+      StringBuffer sb1=new StringBuffer(str1);       
+      StringBuffer sb2=new StringBuffer(str1);       
+ 
+      System.out.println(sb1);
+      System.out.println(sb2);
+      System.out.println(sb1==sb2);
+      System.out.println(sb1.equals(sb2));
+   }
+}
+o/p:
+enuP CPC
+CPC Pune
+CPC Pune
+false
+false
+-------------------------------------------------------------------------------
+class Demo
+{
+  public static void main(String args[ ]) 
+   {
+      String str1="CPC Pune";
+
+      StringBuilder sb=new StringBuilder(str1);       
+      sb.reverse();
+
+      System.out.println(sb);
+
+      StringBuilder sb1=new StringBuilder(str1);       
+      StringBuilder sb2=new StringBuilder(str1);       
+
+      System.out.println(sb1);
+      System.out.println(sb2);
+      System.out.println(sb1==sb2);
+      System.out.println(sb1.equals(sb2));
+   }
+}
+o/p:
+enuP CPC
+CPC Pune
+CPC Pune
+false
+false
