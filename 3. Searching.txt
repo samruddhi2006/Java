@@ -1,0 +1,110 @@
+import java.util.*;
+
+class Demo
+{
+  public static void main(String args[ ])
+   {
+     HashSet<String> set=new HashSet<String>();
+
+     set.add("Satish");
+     set.add("Anil");
+     set.add("Zaheer");
+     set.add("Manish");
+     set.add("Uma");
+
+     System.out.println(set.contains("Anil"));
+     System.out.println(set.contains("Shweta"));
+     set.remove("Anil"); 
+     System.out.println(set.contains("Anil"));
+   }
+}
+______________________________________________________
+
+import java.util.*;
+
+class Demo
+{
+  public static void main(String args[ ])
+   {
+     HashMap<String, Integer> map=new HashMap<String, Integer>();
+
+     map.put("Pune", 30); 
+     map.put("Mumbai", 34); 
+     map.put("Chennai", 29); 
+     map.put("Kolkata", 32); 
+
+     System.out.println(map.containsKey("Mumbai"));
+     map.remove("Mumbai");
+     System.out.println(map.containsKey("Mumbai"));
+   }
+}
+______________________________________________________
+import java.util.*;
+
+class Wrestler
+{
+  private String wname;
+  private int weight;
+
+  Wrestler(String wname, int weight)  
+    {
+      this.wname=wname;
+      this.weight=weight;
+    }
+
+  public String getWname()
+   {
+     return wname;
+   }
+
+  public int getWeight()
+   {
+     return weight;
+   }
+
+  public String toString()
+   {
+     return "(" + wname + "=" + weight + ")";
+   }
+
+  public boolean equals(Object obj)
+   {
+     if(obj instanceof Wrestler)
+      {
+         if(((Wrestler)obj).getWeight()==this.weight)
+           return true;
+         else
+            return false;
+      }
+    else
+            return false;
+   }
+
+  public int hashCode()
+   {
+     return this.weight;
+   }
+}
+
+class Demo
+{
+  public static void main(String args[ ])
+   {
+     HashSet<Wrestler> set=new HashSet<Wrestler>();
+
+     set.add(new Wrestler("Satish", 110));
+     set.add(new Wrestler("Zaheer", 125));
+     set.add(new Wrestler("Azhar", 110));
+     set.add(new Wrestler("Umesh", 127));
+
+     System.out.println(set);
+     Wrestler w1=new Wrestler("Amit", 127);
+
+     System.out.println(set.contains(w1));
+   }
+}
+
+
+
+
+
